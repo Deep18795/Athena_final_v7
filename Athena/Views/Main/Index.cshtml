@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using  Microsoft.AspNetCore.Http
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<style>
+    .wrapper {
+        text-align: center !important;
+        height: 250px;
+        width: 250px;
+        display: inline-block;
+    }
+
+    .square {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: darkseagreen;
+        font-size: 2.5em;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color: #006400;
+        border-style: solid
+    }
+
+        .square:active {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #609f60;
+            font-size: 2.5em;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-color: #003300;
+            border-style: solid
+        }
+
+    #deleteall {
+        width: 200px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 90%;
+        transform: translate(-50%, -90%);
+        background-color: #e76565;
+        font-size: 1.5em;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-color: #9a1818;
+        border-style: solid;
+    }
+
+
+        #deleteall:active {
+            width: 200px;
+            height: 60px;
+            position: absolute;
+            left: 50%;
+            top: 90%;
+            transform: translate(-50%, -90%);
+            background-color: #e03838;
+            font-size: 1.5em;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-color: #9a1818;
+            border-style: solid;
+        }
+
+</style>
+
+@{
+    ViewData["Title"] = "Main";
+}
+
+
+
+
+@ViewData["Message"]
+<div>
+    <div>
+        <a class="square" asp-area="" asp-controller="Create" asp-action="ChooseGroup" style="color: #006400">Create New Lab</a>
+    </div>
+    @if (Context.Session.GetString("Role") == "staff")
+    {
+        <div id="deleteall"><a asp-area="" asp-controller="Main" asp-action="DeleteAll" style="color: #841515">Delete All Labs</a></div>
+    }
+</div>

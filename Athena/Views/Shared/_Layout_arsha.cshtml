@@ -1,0 +1,129 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using  Microsoft.AspNetCore.Http
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Athena</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/lib/arsha/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/arsha/assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/lib/arsha/assets/css/style.css" rel="stylesheet">
+    <link href="~/css/my.css" rel="stylesheet" />
+    <!-- =======================================================
+    * Template Name: Arsha - v2.2.0
+    * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center">
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+<h1 class="logo mr-auto"><a href="~/reservations">Athena</a></h1> <!-- Uncomment below if you prefer to use an image logo --> <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>--> }
+else
+{
+<h1 class="logo mr-auto"><a href="~/">Athena</a></h1>}
+
+            <nav id="nav" class="nav-menu d-none d-lg-block">
+                <ul>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+
+        @if (Context.Session.GetString("Role") == "staff")
+        {
+
+<li><a href="~/Groups">Groups</a></li>
+                    <li><a href="~/Templates">Templates</a></li>
+                                        <li><a href="~/User">Users</a></li>
+}
+
+                        <li><a href="~/requests">Request</a></li>
+                                        <li>
+                                            <a href="#">@User.Identity.Name</a>
+                                        </li>
+                                                        <li>
+                                                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                                                <button type="submit" class="nav-link btn btn-link link text-light logout-form">Logout</button>
+                                                            </form>
+                                                        </li> }
+                                                                    else
+                                                                    {
+                                                        <li>
+                                                            <a class="" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                                        </li>}
+
+
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+
+    @RenderBody()
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        
+
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                <img src="~/lib/images/collage.jpg" width="300" />
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+                <img src="~/lib/images/group.png" width="60" />
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/lib/arsha/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/lib/arsha/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/lib/arsha/assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/lib/arsha/assets/js/main.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

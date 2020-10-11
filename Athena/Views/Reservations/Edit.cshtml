@@ -1,0 +1,91 @@
+﻿@model Athena.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Edit Reservation </h2>
+            <p class="text-right float-right">
+                Current Date : <span id="lblLiveTime"> </span>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="col-4 offset-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="ReservationId" />
+                    <input type="hidden" asp-for="CreatedByUserId" />
+                    <input type="hidden" asp-for="CreatedOn" />
+                    <input type="hidden" asp-for="TemplateId" id="hdnTemplateId" />
+                    <div class="form-group">
+                        <label asp-for="StartOn" class="control-label"></label>
+                        <input asp-for="StartOn" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                        <span asp-validation-for="StartOn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndOn" class="control-label"></label>
+                        <input asp-for="EndOn" class="form-control" disabled="disabled" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                        <span asp-validation-for="EndOn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GroupId" class="control-label"></label>
+                        <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId"></select>
+                        <span asp-validation-for="GroupId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TemplateId" class="control-label"></label>
+                        <select asp-for="TemplateId" class="form-control" asp-items="ViewBag.TemplateId"></select>
+                        <span asp-validation-for="TemplateId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        $(document).ready(
+            function () {
+                startTime();
+
+                $('#GroupId').change(function () {
+                    GetTemplates($(this).val(), $('#hdnTemplateId').val());
+                });
+
+
+                $('#StartOn').change(function () {
+                    var d = new Date($(this).val());
+                    var d = new Date($(this).val());
+                    var d2 = AddHourInDate(d, 2);
+
+                    $('#EndOn').attr('max', d2);
+                    $('#EndOn').removeAttr('disabled');
+                });
+
+                $('#GroupId').change();
+            }
+        );
+
+    </script>
+}

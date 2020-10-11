@@ -1,0 +1,52 @@
+﻿@model GroupSearch
+
+@{ ViewData["Title"] = "Group Templates"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Group Templates </h2>
+            <p class="text-right float-right">
+                <a class="btn btn-warning" asp-area="" asp-controller="Group_Template" asp-action="Create" asp-route-id="@Model.group.GroupId">
+                    Add Template
+                </a>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+            <table class="table">
+                <tr>
+                    <th>
+                        Template Name
+                    </th>
+                    <th>
+                        Path
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.group_template)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Template.TemplateName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Template.Path)
+        </td>
+        <td>
+            <a asp-area="" class="btn btn-danger" asp-controller="Group_Template" asp-action="Delete" asp-route-id="@item.Id">
+                Delete Link
+            </a>
+        </td>
+    </tr>}
+
+            </table>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </section>
+</main>

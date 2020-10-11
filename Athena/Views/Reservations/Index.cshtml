@@ -1,0 +1,99 @@
+﻿@using  Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<Athena.Models.Reservation>
+@inject UserManager<IdentityUser> _userManager
+
+@{ ViewData["Title"] = "Index"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Reservation List</h2>
+            <p class="text-right float-right">
+                <a class="btn btn-warning" asp-action="Create">Create New</a>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ReservationId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartOn)
+                            /
+                            @Html.DisplayNameFor(model => model.EndOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedByUser)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Group)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Template)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReservationId)
+            </td>
+            <td>
+                Start : @Html.DisplayFor(modelItem => item.StartOn)
+                <br />
+                End : @Html.DisplayFor(modelItem => item.EndOn)
+                <br />
+                Duration : @((item.EndOn - item.StartOn).TotalMinutes) min.
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Template.TemplateName)
+            </td>
+            <td class="text-right">
+                <a asp-action="Details" asp-route-id="@item.ReservationId" class="btn btn-info">Details</a>
+                <input type="hidden" value="@DateTime.Now" />
+                <input type="hidden" value="@DateTime.UtcNow" />
+
+                @if (Context.Session.GetString("Role") == "staff")
+                {
+                <span>
+                    <a asp-action="Edit" asp-route-id="@item.ReservationId" class="btn btn-primary">Edit</a>
+                </span>}
+
+                @if (Context.Session.GetString("Role") == "staff" || ViewBag.CurrentUserId == item.CreatedByUserId)
+                {
+                <span>
+                    <a asp-action="Delete" asp-route-id="@item.ReservationId" class="btn btn-danger">Delete</a>
+                </span>}
+
+                @if (DateTime.Now >= item.StartOn && DateTime.Now <= item.EndOn)
+                {
+                <a asp-controller="Create" asp-action="Index" asp-route-id="@item.TemplateId" asp-route-revId="@item.ReservationId" class="btn btn-success mt-1">
+                    Manage Lab
+                </a>}
+
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</main>

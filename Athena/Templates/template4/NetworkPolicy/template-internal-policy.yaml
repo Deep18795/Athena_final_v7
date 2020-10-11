@@ -1,0 +1,33 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: internal-policy
+  labels: 
+    lab: example
+spec:
+  podSelector:
+    matchLabels:
+      lab: example
+      net: internal
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels: 
+            lab: example
+            net: dmz     
+      - podSelector:
+          matchLabels: 
+            lab: example
+            net: internal
+      - namespaceSelector:
+          matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+  egress:
+    - to:
+      - podSelector:
+          matchLabels:
+            lab: example
+      - namespaceSelector:
+          matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Athena.Controllers.CreateController">
+    <Position X="7.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAACBAAAAAAAAAAgAAIAAAAAAEEAAAEAAAA=</HashCode>
+      <FileName>Controllers\CreateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.EndLabController">
+    <Position X="1" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\EndLabController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.Group_TemplateController">
+    <Position X="4" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAABACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\Group_TemplateController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.Group_UserController">
+    <Position X="10" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABACAAAAAAAAAAAEAAFACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\Group_UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.GroupsController">
+    <Position X="7.25" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAQAEAABQCAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\GroupsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.MainController">
+    <Position X="10.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAACAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\MainController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.TemplatesController">
+    <Position X="0.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAEAABJQCBAAAAAAAAgAEAAEACIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TemplatesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.UserController">
+    <Position X="12.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.ViewLabController">
+    <Position X="3.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ViewLabController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Models.Group">
+    <Position X="7.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Models.Group_Template">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAEAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Group_Template.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Models.Group_User">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAEAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Group_User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Models.Template">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAIAAAAAAQAAAAAAAABAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\Template.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Models.User">
+    <Position X="12.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAEAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Athena.Controllers.HomeController">
+    <Position X="12.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAIAAAAQAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

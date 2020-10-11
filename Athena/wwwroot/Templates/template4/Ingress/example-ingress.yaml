@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: debian-example2
+  annotations:
+    athena-regex: (.*)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    lab: example    
+spec:
+  rules:
+  - host: test.athenaprojectlab.com
+    http:
+      paths:
+      - path: /example/debian/tty/
+        backend:
+          serviceName: debian-tty
+          servicePort: 80
+

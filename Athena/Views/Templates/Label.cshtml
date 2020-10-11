@@ -1,0 +1,30 @@
+﻿
+@{ ViewData["Title"] = "Label"; }
+
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Value mismatch</h2>
+            <p class="text-right float-right">
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="col-6 offset-3">
+
+                <h3>@ViewBag.Error</h3>
+
+                <div>
+                    <a asp-action="Create">Back to List</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>

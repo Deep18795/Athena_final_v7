@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Athena.Models.Group>
+
+@{ ViewData["Title"] = "Group List"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Group List </h2>
+            <p class="text-right float-right">
+                <a class="btn btn-warning" asp-action="Create">Create New</a>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Group Name
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-success" asp-action="User" asp-route-id="@item.GroupId">Users</a>
+                <a class="btn btn-primary" asp-action="Template" asp-route-id="@item.GroupId">Templates</a>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.GroupId">Edit</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.GroupId">Delete</a>
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

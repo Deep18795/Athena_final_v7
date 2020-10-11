@@ -1,0 +1,55 @@
+﻿@model Athena.Models.Request
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout_arsha.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Edit Reservation </h2>
+            <p class="text-right float-right">
+                Current Date : <span id="lblLiveTime"> </span>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="col-4 offset-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="RequestId" />
+                    <input type="hidden" asp-for="CreatedOn" />
+                    <input type="hidden" asp-for="CreatedByUserId" />
+
+                   
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Text" class="control-label"></label>
+                        <textarea asp-for="Text" class="form-control" ></textarea>
+                        <span asp-validation-for="Text" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+

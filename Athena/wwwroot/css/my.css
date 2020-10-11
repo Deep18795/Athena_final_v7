@@ -1,0 +1,21 @@
+﻿#breadcrumbs .container p {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+a.active {
+    color: #47b2e4;
+}
+
+#main {
+min-height:580px;
+}
+
+    #openlab-div :hover {
+        color: white !important;
+      
+    }
+
+.remain-time {
+    width:270px;
+}

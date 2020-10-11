@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Athena.Models.Group_User>
+
+@{
+    ViewData["Title"] = "Choose Group";
+}
+
+<h2>Choose Group</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Group Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="ChooseTemplate" asp-route-id="@item.Group.GroupId">
+                    @Html.DisplayFor(modelItem => item.Group.GroupName)
+                </a>
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>

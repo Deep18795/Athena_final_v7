@@ -1,0 +1,125 @@
+﻿@{ ViewData["Title"] = "View Lab"; }
+
+<script>
+    function Wait() {
+        alert("Please wait for a few minutes till the docker containers are prepared.");
+    }
+</script>
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left pt-3">Lab Detail</h2>
+
+            <p class=" float-right pl-2" >
+                <a asp-controller="EndLab" style="height: 50px; padding-top: 10px;" asp-action="Index" onclick="return confirm('Are you sure you want to end this Lab?');" class="btn btn-danger">
+                    End Lab
+                </a>
+            </p>
+
+            <p class="text-right float-right alert alert-danger remain-time">
+                Remaining time : <span id="RemainTime"></span>
+            </p>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+                <div id="row">
+                    <div id="left" class="col-6 float-left">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        System name
+                                    </th>
+                                    <th>IP address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.IPADD)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Value
+                                        </td>
+                                        <td>
+                                            @item.Key
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="right" class="col-6 float-right text-right">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Interfaces
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.ingress)
+                                {
+                                    <tr>
+                                        <td><a href="@item.Key" target="_blank" class="btn btn-primary">@item.Value</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <input type="hidden" value="@ViewBag.EndTime" id="hdnEndTime" />
+
+            </div>
+        </section>
+    </main>
+
+            @section Scripts {
+                <script>
+                    // Set the date we're counting down to
+                    var dateTime = $('#hdnEndTime').val();
+
+                    console.log(dateTime);
+
+                    var countDownDate = new Date(dateTime);
+
+                    console.log('countDownDate', countDownDate);
+
+                    // Update the count down every 1 second
+                    var x = setInterval(function () {
+
+                        // Get today's date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now and the count down date
+                        var distance = countDownDate - now;
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // Display the result in the element with id="demo"
+                        document.getElementById("RemainTime").innerHTML = hours + "h "
+                            + minutes + "m " + seconds + "s ";
+
+                        // If the count down is finished, write some text
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("RemainTime").innerHTML = "Expired!";
+                            window.location.href = "EndLab"
+                        }
+                    }, 1000);
+                </script>
+
+            }

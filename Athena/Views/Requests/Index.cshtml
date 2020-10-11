@@ -1,0 +1,78 @@
+﻿@using  Microsoft.AspNetCore.Http
+@model IEnumerable<Athena.Models.Request>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_arsha.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Request List</h2>
+            <p class="text-right float-right">
+                @if (Context.Session.GetString("Role") != "staff")
+                {
+                    <a class="btn btn-warning" asp-action="Create">Create New</a>
+                }
+                </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedByUser)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Text)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedByUser.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Text)
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-info">Details</a>
+
+                                <a asp-action="Delete" asp-route-id="@item.RequestId" class="btn btn-danger">Delete</a>
+
+                                @if (Context.Session.GetString("Role") != "staff")
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-primary">Edit</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</main>

@@ -1,0 +1,36 @@
+﻿@model Athena.Models.Template
+
+@{
+    ViewData["Title"] = "Template Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Template</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Path)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Path)
+        </dd>
+        <dt class = "col-sm-2">
+            Template Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TemplateName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lab)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lab)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TemplateId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

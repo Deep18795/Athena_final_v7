@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: alpine-example2
+  annotations:
+    athena-regex: (.*)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    lab: example    
+spec:
+  rules:
+  - host: test.athenaprojectlab.com
+    http:
+      paths:
+      - path: /example/alpine/tty/
+        backend:
+          serviceName: alpine-tty
+          servicePort: 80
+

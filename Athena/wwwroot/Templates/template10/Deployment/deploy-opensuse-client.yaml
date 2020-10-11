@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opensuse-client
+  labels:
+    lab: example
+    system: client
+    net: internal
+spec:
+  selector:
+    matchLabels:
+      lab: example
+      system: client
+      net: internal    
+  template:
+    metadata:
+      labels:
+        lab: example
+        system: client
+        net: internal
+    spec:
+      containers:
+        - name: opensuse-vnc
+          image: o0phoenix0o/athena:opensuse-gui
+          ports:
+            - containerPort: 1234
+            - containerPort: 8080
+
+
+

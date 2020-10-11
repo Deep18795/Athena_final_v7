@@ -1,0 +1,32 @@
+﻿@model Athena.Models.Group_Template
+
+@{
+    ViewData["Title"] = "Template Details";
+}
+
+<h1>Details</h1>
+
+
+<div>
+    <h4>Group_Template</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Group.GroupId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Template)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Template.TemplateId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

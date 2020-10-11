@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-client
+  labels:
+    lab: example
+    system: client
+    net: internal
+spec:
+  selector:
+    matchLabels:
+      lab: example
+      system: client
+      net: internal    
+  template:
+    metadata:
+      labels:
+        lab: example
+        system: client
+        net: internal
+    spec:
+      containers:
+        - name: ubuntu-vnc
+          image: deep1807/ubuntu-gui
+          ports:
+            - containerPort: 80
+            - containerPort: 1234
+          env:
+            - name: RELATIVE_URL_ROOT
+              value: example/ubuntu/vnc
+
+

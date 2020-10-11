@@ -1,0 +1,57 @@
+﻿@model Athena.Models.Template
+
+@{ ViewData["Title"] = "Create Template"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Create Lab Template</h2>
+            <p class="text-right float-right">
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="col-4 offset-2 float-left">
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Path" class="control-label"></label>
+                        <input asp-for="Path" class="form-control" />
+                        <span asp-validation-for="Path" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TemplateName" class="control-label">Template Name</label>
+                        <input asp-for="TemplateName" class="form-control" />
+                        <span asp-validation-for="TemplateName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Lab" class="control-label">Lab Label</label>
+                        <input asp-for="Lab" class="form-control" />
+                        <span asp-validation-for="Lab" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create Template" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+            
+            <partial name="TemplateWarning" />
+
+        </div>
+
+    </section>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

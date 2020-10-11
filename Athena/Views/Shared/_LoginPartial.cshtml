@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using  Microsoft.AspNetCore.Http
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<style>
+    .link {
+        font-weight: 500;
+    }
+    #name{
+        
+        position: relative;
+        font-weight: 500;
+        padding-left: 15px;
+        padding-right: 15px
+        
+
+    }
+
+
+</style>
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+
+            @if (Context.Session.GetString("Role") == "staff")
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark link" asp-area="" asp-controller="Groups" asp-action="Index">Groups</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark link" asp-area="" asp-controller="Templates" asp-action="Index">Templates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark link" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                </li>
+
+            }
+            <li class="nav-link text-dark">
+               @User.Identity.Name
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-dark link">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+    </ul>

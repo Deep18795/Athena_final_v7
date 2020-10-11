@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Athena.Models.Template>
+
+@{ ViewData["Title"] = "Template List"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Template List</h2>
+            <p class="text-right float-right">
+                <a class="btn btn-warning" asp-action="Create">Create New</a>
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Path)
+                        </th>
+                        <th>
+                            Template Name
+                        </th>
+                        <th>
+                            Lab Label
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemplateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lab)
+            </td>
+            <td>
+                <a class="btn btn-primary"  asp-action="Edit" asp-route-id="@item.TemplateId">Edit</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.TemplateId">Delete</a>
+            </td>
+        </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

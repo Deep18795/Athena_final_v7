@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: juice-shop-interface
+  labels:
+    lab: juice-shop
+spec:
+  selector:
+    lab: juice-shop
+  ports:
+    - port: 80
+      targetPort: 3000

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: centos-client
+  labels:
+    lab: example
+    system: client
+    net: internal
+spec:
+  selector:
+    matchLabels:
+      lab: example
+      system: client
+      net: internal    
+  template:
+    metadata:
+      labels:
+        lab: example
+        system: client
+        net: internal
+    spec:
+      containers:
+        - name: centos-vnc
+          image: deep1807/centos-gui:2.0
+          ports:
+            - containerPort: 1234
+            - containerPort: 6080
+
+
+

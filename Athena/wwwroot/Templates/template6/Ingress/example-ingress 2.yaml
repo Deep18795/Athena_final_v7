@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-example
+  annotations:
+    athena-regex: (.*)
+  labels:
+    lab: example    
+spec:
+  rules:
+  - host: test.athenaprojectlab.com
+    http:
+      paths:
+      - path: /example/ubuntu/vnc/
+        backend:
+          serviceName: ubuntu-vnc
+          servicePort: 80

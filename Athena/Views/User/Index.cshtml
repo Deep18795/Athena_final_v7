@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{ ViewData["Title"] = "User List"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">User List</h2>
+            <p class="text-right float-right">
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+
+            <h2></h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            User ID
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+        </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_Layout_arsha.cshtml";
+}
+
+<h1>Error</h1>
+
+
+@{ ViewData["Title"] = "Error"; }
+<main id="main">
+    <section class="inner-page">
+        <div class="container mt-5">
+
+            <h3 class="alert alert-danger text-center">Error</h3>
+
+            <h4 class="text-center">@ViewBag.Exception</h4>
+
+            <div class="text-center">
+                <a href="~/">Goto Home</a>
+            </div>
+        </div>
+    </section>
+</main>

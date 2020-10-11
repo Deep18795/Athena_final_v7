@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-lab-terminal
+  labels:
+    lab: initial
+spec:
+  type: NodePort
+  clusterIP: 10.100.100.100
+  selector:
+    lab: initial
+    app: ssh-client
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31000
+

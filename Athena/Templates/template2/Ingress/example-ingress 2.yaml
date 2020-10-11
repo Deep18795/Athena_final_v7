@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: centos-example
+  annotations:
+    athena-regex: (.*)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  labels:
+    lab: example    
+spec:
+  rules:
+  - host: test.athenaprojectlab.com
+    http:
+      paths:
+      - path: /example/centos/vnc/(.*)
+        backend:
+          serviceName: centos-vnc
+          servicePort: 80
+      - path: /websockify
+        backend:
+          serviceName: centos-vnc
+          servicePort: 80

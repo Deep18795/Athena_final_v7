@@ -1,0 +1,41 @@
+﻿@model Athena.Models.Group_Template
+
+@{ ViewData["Title"] = "Link Template"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Link a Template to a Group</h2>
+            <p class="text-right float-right">
+            </p>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="col-4 offset-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Group" class="control-label"></label>
+                        <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Template" class="control-label"></label>
+                        <select asp-for="TemplateId" class="form-control" asp-items="ViewBag.TemplateId"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Link Template" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

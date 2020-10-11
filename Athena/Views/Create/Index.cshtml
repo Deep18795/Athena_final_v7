@@ -1,0 +1,33 @@
+﻿
+@{ ViewData["Title"] = "Lab Environment created"; }
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <h2 class="float-left">Lab Interface</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+
+            @ViewData["Message"]
+            
+            <div id="head" class="alert alert-success text-center">
+                <strong>Your Lab Environment has been created!</strong>
+            </div>
+           
+            <div id="text" class="alert alert-warning text-center">
+                Please note that it may take some time for all lab systems to launch.
+            </div>
+
+            <div id="openlab-div" class="text-center">
+                <a id="openlab" class="btn btn-outline-success p-5" asp-area="" asp-controller="ViewLab" asp-action="Index" style="color:#006400">
+                    <h2> Open Lab Interface</h2>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,54 @@
+﻿@page
+@model LoginModel
+@{ ViewData["Title"] = "Login"; }
+
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h1>Log in with</h1>
+                <h2>athenaprojectweb.com</h2>
+                <div class="d-lg-flex">
+
+                    @{
+                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                        {
+                            <div>
+                                <p class="text-light">
+                                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                    for details on setting up this ASP.NET application to support logging in via external services.
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                <div>
+                                    <p>
+                                        @foreach (var provider in Model.ExternalLogins)
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        }
+                                    </p>
+                                </div>
+                            </form>
+                        }
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                @*<img src="~/lib/arsha/assets/img/hero-img.png" class="img-fluid animated" alt="">*@
+                <img src="~/lib/images/collage.jpg" class="img-fluid animated" />
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
