@@ -2,4 +2,4 @@
 Final Code 
 Athena Project 
 project based on "asp.Net core, C#, Kubernetes"
-"Wellington istitute of Technology"
+"Wellington Institute of Technology"
